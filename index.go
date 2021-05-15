@@ -1,4 +1,4 @@
-package captainhook
+package tacklebox
 
 import (
 	"fmt"
