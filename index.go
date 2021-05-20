@@ -1,7 +1,6 @@
 package tacklebox
 
 import (
-	"fmt"
 	"github.com/tacklebox-webhooks/golang/components"
 )
 
