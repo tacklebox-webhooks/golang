@@ -1,6 +1,6 @@
 package components
 
-import "juanpe.example.com/golang/apis"
+import "github.com/tacklebox-webhooks/golang/apis"
 
 type Subscription struct {
 	ApiKey  string

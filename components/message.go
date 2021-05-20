@@ -1,6 +1,6 @@
 package components
 
-import "juanpe.example.com/golang/apis"
+import "github.com/tacklebox-webhooks/golang/apis"
 
 type Message struct {
 	ApiKey  string

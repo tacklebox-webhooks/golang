@@ -2,7 +2,7 @@ package tacklebox
 
 import (
 	"fmt"
-	"juanpe.example.com/golang/components"
+	"github.com/tacklebox-webhooks/golang/components"
 )
 
 type Webhooks struct {
@@ -10,11 +10,6 @@ type Webhooks struct {
 	BaseUrl string
 	Stage   string
 }
-
-// func (self Webhooks) Authorization() {
-//     service := components.Service{ApiKey: self.ApiKey, BaseUrl: self.BaseUrl, Stage: self.Stage}
-//     return service
-// }
 
 func (self Webhooks) Service() components.Service {
 	service := components.Service{ApiKey: self.ApiKey, BaseUrl: self.BaseUrl, Stage: self.Stage}
