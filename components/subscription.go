@@ -23,12 +23,7 @@ func (self Subscription) Get(serviceId, userId, subscriptionId string) string {
 	return api.GetSubscription(serviceId, userId, subscriptionId)
 }
 
-// func (self Subscription) GetSecret(serviceId, userId, subscriptionId string) string {
-// 	api := apis.SubscriptionApi{ApiKey: self.ApiKey, BaseUrl: self.BaseUrl, Stage: self.Stage}
-// 	return api.GetSecret(serviceId, userId, subscriptionId)
-// }
-
-// func (self Subscription) Delete(serviceId, userId, subscriptionId string) string {
-// 	api := apis.SubscriptionApi{ApiKey: self.ApiKey, BaseUrl: self.BaseUrl, Stage: self.Stage}
-// 	return api.DeleteSubscription(serviceId, userId, subscriptionId)
-// }
+func (self Subscription) Delete(serviceId, userId, subscriptionId string) string {
+	api := apis.SubscriptionApi{ApiKey: self.ApiKey, BaseUrl: self.BaseUrl, Stage: self.Stage}
+	return api.DeleteSubscription(serviceId, userId, subscriptionId)
+}

@@ -23,7 +23,7 @@ func (self Service) Get(serviceId string) string {
 	return api.GetService(serviceId)
 }
 
-// func (self Service) Delete(serviceId string) string {
-// 	   api := apis.ServiceApi{apiKey: self.ApiKey, baseUrl: self.BaseUrl, stage: self.Stage}
-//     return apis.DeleteService(self, serviceId)
-// }
+func (self Service) Delete(serviceId string) string {
+	api := apis.ServiceApi{apiKey: self.ApiKey, baseUrl: self.BaseUrl, stage: self.Stage}
+	return apis.DeleteService(self, serviceId)
+}

@@ -10,10 +10,10 @@ type EventApi struct {
 
 func (self EventApi) ListEvents(serviceId, userId string) string {
 	if !isValidId(serviceId) {
-		return "Error: The listEvents method must be invoked with a non-empty string serviceId argument."
+		return "Error: The ListEvents method must be invoked with a non-empty string serviceId argument."
 	}
 	if !isValidId(userId) {
-		return "Error: The listEvents method must be invoked with a non-empty string userId argument."
+		return "Error: The ListEvents method must be invoked with a non-empty string userId argument."
 	}
 
 	path := fmt.Sprintf("/%s/services/%s/users/%s/events", self.Stage, serviceId, userId)
@@ -23,13 +23,13 @@ func (self EventApi) ListEvents(serviceId, userId string) string {
 
 func (self EventApi) CreateEvent(serviceId, userId string, eventData map[string]interface{}) string {
 	if !isValidId(serviceId) {
-		return "Error: The createEvent method must be invoked with a non-empty string serviceId argument."
+		return "Error: The CreateEvent method must be invoked with a non-empty string serviceId argument."
 	}
 	if !isValidId(userId) {
-		return "Error: The createEvent method must be invoked with a non-empty string userId argument."
+		return "Error: The CreateEvent method must be invoked with a non-empty string userId argument."
 	}
 	if !isValidEventData(eventData) {
-		return "Error: The createEvent method must be invoked with an eventData argument containing non-empty event_type_id and payload properties."
+		return "Error: The CreateEvent method must be invoked with a map[string]interface{} containing an event_type and payload keys with non-empty string values (map for payload is also ok)."
 	}
 
 	path := fmt.Sprintf("/%s/services/%s/users/%s/events", self.Stage, serviceId, userId)
@@ -39,13 +39,13 @@ func (self EventApi) CreateEvent(serviceId, userId string, eventData map[string]
 
 func (self EventApi) GetEvent(serviceId, userId, eventId string) string {
 	if !isValidId(serviceId) {
-		return "Error: The getEvent method must be invoked with a non-empty string serviceId argument."
+		return "Error: The GetEvent method must be invoked with a non-empty string serviceId argument."
 	}
 	if !isValidId(userId) {
-		return "Error: The getEvent method must be invoked with a non-empty string userId argument."
+		return "Error: The GetEvent method must be invoked with a non-empty string userId argument."
 	}
 	if !isValidId(eventId) {
-		return "Error: The getEvent method must be invoked with a non-empty string eventId argument."
+		return "Error: The GetEvent method must be invoked with a non-empty string eventId argument."
 	}
 
 	path := fmt.Sprintf("/%s/services/%s/users/%s/events/$s", self.Stage, serviceId, userId, eventId)

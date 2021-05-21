@@ -23,7 +23,7 @@ func (self User) Get(serviceId, userId string) string {
 	return api.GetUser(serviceId, userId)
 }
 
-// func (self User) delete(serviceId, userId string) string {
-// 	api := apis.UserApi{apiKey: self.ApiKey, baseUrl: self.BaseUrl, stage: self.Stage}
-// 	return api.deleteUser(serviceId, userId)
-// }
+func (self User) Delete(serviceId, userId string) string {
+	api := apis.UserApi{apiKey: self.ApiKey, baseUrl: self.BaseUrl, stage: self.Stage}
+	return api.DeleteUser(serviceId, userId)
+}

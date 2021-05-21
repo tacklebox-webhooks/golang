@@ -23,7 +23,7 @@ func (self EventType) Get(serviceId, eventTypeId string) string {
 	return api.GetEventType(serviceId, eventTypeId)
 }
 
-// func (self EventType) delete(serviceId, eventTypeId string) string {
-// 	api := apis.EventTypeApi{apiKey: self.ApiKey, baseUrl: self.BaseUrl, stage: self.Stage}
-// 	return api.deleteEventType(serviceId, eventTypeId)
-// }
+func (self EventType) Delete(serviceId, eventTypeId string) string {
+	api := apis.EventTypeApi{apiKey: self.ApiKey, baseUrl: self.BaseUrl, stage: self.Stage}
+	return api.DeleteEventType(serviceId, eventTypeId)
+}

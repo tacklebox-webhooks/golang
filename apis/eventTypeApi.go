@@ -10,7 +10,7 @@ type EventTypeApi struct {
 
 func (self EventTypeApi) ListEventTypes(serviceId string) string {
 	if !isValidId(serviceId) {
-		return "Error: The listEventTypes method must be invoked with a non-empty string serviceId argument."
+		return "Error: The ListEventTypes method must be invoked with a non-empty string serviceId argument."
 	}
 
 	path := fmt.Sprintf("/%s/services/%s/event_types", self.Stage, serviceId)
@@ -20,10 +20,10 @@ func (self EventTypeApi) ListEventTypes(serviceId string) string {
 
 func (self EventTypeApi) CreateEventType(serviceId string, eventTypeData map[string]interface{}) string {
 	if !isValidId(serviceId) {
-		return "Error: The createEventType method must be invoked with a non-empty string serviceId argument."
+		return "Error: The CreateEventType method must be invoked with a non-empty string serviceId argument."
 	}
 	if !isValidData(eventTypeData) {
-		return "Error: The createEventType method must be invoked with an eventTypeData object that contains a non-empty string name property."
+		return "Error: The CreateEventType method must be invoked with a map[string]interface{} that contains a name key with non-empty string value."
 	}
 
 	path := fmt.Sprintf("/%s/services/%s/event_types", self.Stage, serviceId)
@@ -33,14 +33,27 @@ func (self EventTypeApi) CreateEventType(serviceId string, eventTypeData map[str
 
 func (self EventTypeApi) GetEventType(serviceId, eventTypeId string) string {
 	if !isValidId(serviceId) {
-		return "Error: The getEventType method must be invoked with a non-empty string serviceId argument."
+		return "Error: The GetEventType method must be invoked with a non-empty string serviceId argument."
 	}
 	if !isValidId(eventTypeId) {
-		return "Error: The getEventType method must be invoked with a non-empty string eventTypeId argument."
+		return "Error: The GetEventType method must be invoked with a non-empty string eventTypeId argument."
 	}
 
 	path := fmt.Sprintf("/%s/services/%s/event_types/%s", self.Stage, serviceId, eventTypeId)
 	request := HttpRequest{method: "GET", baseUrl: self.BaseUrl, path: path, attempt: 1}
+	return send(request, self.ApiKey)
+}
+
+func (self EventTypeApi) DeleteEventType(serviceId, eventTypeId string) string {
+	if !isValidId(serviceId) {
+		return "Error: The DeleteEventType method must be invoked with a non-empty string serviceId argument."
+	}
+	if !isValidId(eventTypeId) {
+		return "Error: The DeleteEventType method must be invoked with a non-empty string eventTypeId argument."
+	}
+
+	path := fmt.Sprintf("/%s/services/%s/event_types/%s", self.Stage, serviceId, eventTypeId)
+	request := HttpRequest{method: "DELETE", baseUrl: self.BaseUrl, path: path, attempt: 1}
 	return send(request, self.ApiKey)
 }
 
