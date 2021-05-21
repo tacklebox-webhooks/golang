@@ -24,6 +24,6 @@ func (self User) Get(serviceId, userId string) string {
 }
 
 func (self User) Delete(serviceId, userId string) string {
-	api := apis.UserApi{apiKey: self.ApiKey, baseUrl: self.BaseUrl, stage: self.Stage}
+	api := apis.UserApi{ApiKey: self.ApiKey, BaseUrl: self.BaseUrl, Stage: self.Stage}
 	return api.DeleteUser(serviceId, userId)
 }
