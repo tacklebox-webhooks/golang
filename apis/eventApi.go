@@ -29,7 +29,7 @@ func (self EventApi) CreateEvent(serviceId, userId string, eventData map[string]
 		return "Error: The CreateEvent method must be invoked with a non-empty string userId argument."
 	}
 	if !isValidEventData(eventData) {
-		return "Error: The CreateEvent method must be invoked with a map[string]interface{} containing an event_type key with a non-empty string value and a payload key with a non-empty map[string]interface{} value."
+		return "Error: The CreateEvent method must be invoked with a map[string]interface{} containing an event_type and idempotency_key keys with non-empty string values and a payload key with a non-empty map[string]interface{} value."
 	}
 
 	path := fmt.Sprintf("/%s/services/%s/users/%s/events", self.Stage, serviceId, userId)
