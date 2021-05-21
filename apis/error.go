@@ -27,5 +27,5 @@ func isValidEventData(data map[string]interface{}) bool {
 		fmt.Sprintf("%T", data["event_type"].(string)) == "string" &&
 		len(data["idempotency_key"].(string)) > 0 &&
 		fmt.Sprintf("%T", data["idempotency_key"].(string)) == "string" &&
-		len(data["payload"].(map[string]string)) > 0
+		len(data["payload"].(map[string]interface{})) > 0
 }
