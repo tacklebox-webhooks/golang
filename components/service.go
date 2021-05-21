@@ -25,5 +25,5 @@ func (self Service) Get(serviceId string) string {
 
 func (self Service) Delete(serviceId string) string {
 	api := apis.ServiceApi{ApiKey: self.ApiKey, BaseUrl: self.BaseUrl, Stage: self.Stage}
-	return api.DeleteService(self, serviceId)
+	return api.DeleteService(serviceId)
 }
