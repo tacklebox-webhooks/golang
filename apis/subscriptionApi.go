@@ -7,7 +7,6 @@ import (
 type SubscriptionApi struct {
 	ApiKey  string
 	BaseUrl string
-	Stage   string
 }
 
 func (self SubscriptionApi) ListSubscriptions(serviceId, userId string) string {
@@ -18,7 +17,7 @@ func (self SubscriptionApi) ListSubscriptions(serviceId, userId string) string {
 		return "Error: The ListSubscriptions method must be invoked with a non-empty string userId argument."
 	}
 
-	path := fmt.Sprintf("/%s/services/%s/users/%s/subscriptions", self.Stage, serviceId, userId)
+	path := fmt.Sprintf("services/%s/users/%s/subscriptions", serviceId, userId)
 	request := HttpRequest{method: "GET", baseUrl: self.BaseUrl, path: path, attempt: 1}
 	return send(request, self.ApiKey)
 }
@@ -34,7 +33,7 @@ func (self SubscriptionApi) CreateSubscription(serviceId, userId string, subscri
 		return "Error: The CreateSubscription method must be invoked with a map[string]interface{} containing an eventTypes key with a non-empty []string value and a url key with a non-empty string value."
 	}
 
-	path := fmt.Sprintf("/%s/services/%s/users/%s/subscriptions", self.Stage, serviceId, userId)
+	path := fmt.Sprintf("services/%s/users/%s/subscriptions", serviceId, userId)
 	request := HttpRequest{method: "POST", baseUrl: self.BaseUrl, path: path, data: subscriptionData, attempt: 1}
 	return send(request, self.ApiKey)
 }
@@ -50,7 +49,7 @@ func (self SubscriptionApi) GetSubscription(serviceId, userId, subscriptionId st
 		return "Error: The GetSubscription method must be invoked with a non-empty string subscriptionId argument."
 	}
 
-	path := fmt.Sprintf("/%s/services/%s/users/%s/subscriptions/$s", self.Stage, serviceId, userId, subscriptionId)
+	path := fmt.Sprintf("services/%s/users/%s/subscriptions/$s", serviceId, userId, subscriptionId)
 	request := HttpRequest{method: "GET", baseUrl: self.BaseUrl, path: path, attempt: 1}
 	return send(request, self.ApiKey)
 }
@@ -66,7 +65,7 @@ func (self SubscriptionApi) DeleteSubscription(serviceId, userId, subscriptionId
 		return "Error: The DeleteSubscription method must be invoked with a non-empty string subscriptionId argument."
 	}
 
-	path := fmt.Sprintf("/%s/services/%s/users/%s/subscriptions/$s", self.Stage, serviceId, userId, subscriptionId)
+	path := fmt.Sprintf("services/%s/users/%s/subscriptions/$s", serviceId, userId, subscriptionId)
 	request := HttpRequest{method: "DELETE", baseUrl: self.BaseUrl, path: path, attempt: 1}
 	return send(request, self.ApiKey)
 }

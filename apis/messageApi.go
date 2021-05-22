@@ -5,7 +5,6 @@ import "fmt"
 type MessageApi struct {
 	ApiKey  string
 	BaseUrl string
-	Stage   string
 }
 
 func (self MessageApi) ListMessages(serviceId, userId string) string {
@@ -16,7 +15,7 @@ func (self MessageApi) ListMessages(serviceId, userId string) string {
 		return "Error: The ListMessages method must be invoked with a non-empty string userId argument."
 	}
 
-	path := fmt.Sprintf("/%s/services/%s/users/%s/messages", self.Stage, serviceId, userId)
+	path := fmt.Sprintf("services/%s/users/%s/messages", serviceId, userId)
 	request := HttpRequest{method: "GET", baseUrl: self.BaseUrl, path: path, attempt: 1}
 	return send(request, self.ApiKey)
 }
@@ -32,7 +31,7 @@ func (self MessageApi) ResendMessage(serviceId, userId, messageId string) string
 		return "Error: The ResendMessage method must be invoked with a non-empty string messageId argument."
 	}
 
-	path := fmt.Sprintf("/%s/services/%s/users/%s/messages/%s/resend", self.Stage, serviceId, userId, messageId)
+	path := fmt.Sprintf("services/%s/users/%s/messages/%s/resend", serviceId, userId, messageId)
 	request := HttpRequest{method: "POST", baseUrl: self.BaseUrl, path: path, attempt: 1}
 	return send(request, self.ApiKey)
 }
@@ -48,7 +47,7 @@ func (self MessageApi) GetMessage(serviceId, userId, messageId string) string {
 		return "Error: The GetMessage method must be invoked with a non-empty string messageId argument."
 	}
 
-	path := fmt.Sprintf("/%s/services/%s/users/%s/messages/%s", self.Stage, serviceId, userId, messageId)
+	path := fmt.Sprintf("services/%s/users/%s/messages/%s", serviceId, userId, messageId)
 	request := HttpRequest{method: "GET", baseUrl: self.BaseUrl, path: path, attempt: 1}
 	return send(request, self.ApiKey)
 }
