@@ -76,7 +76,7 @@ eventData := map[string]interface{}{
 	"event_type": eventType,
 	"payload": map[string]interface{}{
 		"message": "Hello from the Go wrapper!"},
-	"idempotency_key": "8624862"}
+	"idempotency_key": "1"}
 
 tb.Event().Create(serviceId, userId, eventData)
 ```
