@@ -73,10 +73,10 @@ serviceId := "d90af763-5839-4a90-834c-5512980984f5"
 userId := "cabea1b5-b485-41b7-8146-72ece22dc458"
 
 eventData := map[string]interface{}{
-	"event_type": eventType,
-	"payload": map[string]interface{}{
-		"message": "Hello from the Go wrapper!"},
-	"idempotency_key": "1"}
+    "event_type": eventType,
+    "payload": map[string]interface{}{
+        "message": "Hello from the Go wrapper!"},
+    "idempotency_key": "1"}
 
 tb.Event().Create(serviceId, userId, eventData)
 ```
