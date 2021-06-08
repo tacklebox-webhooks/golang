@@ -17,12 +17,24 @@ func isValidName(data map[string]string) bool {
 }
 
 func isValidSubscriptionData(data map[string]interface{}) bool {
+	if data["event_types"] {
+		data["eventTypes"] = data["event_types"]
+	}
+
 	return len(data["url"].(string)) > 0 &&
 		fmt.Sprintf("%T", data["url"].(string)) == "string" &&
 		len(data["eventTypes"].([]string)) > 0
 }
 
 func isValidEventData(data map[string]interface{}) bool {
+	if data["eventType"] {
+		data["event_type"] = data["eventType"]
+	}
+
+	if data["idempotencyKey"] {
+		data["idempotency_key"] = data["idempotencyKey"]
+	}
+
 	return len(data["event_type"].(string)) > 0 &&
 		fmt.Sprintf("%T", data["event_type"].(string)) == "string" &&
 		len(data["idempotency_key"].(string)) > 0 &&
